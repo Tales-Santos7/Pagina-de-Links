@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Controle - Links</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #ffc107;
+    }
+
+    form,
+    .link-item {
+      background: #222;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      border-radius: 5px;
+      padding: 0.5rem;
+      margin: 0.3rem;
+      width: 40%;
+    }
+
+    button {
+      padding: 0.5rem;
+      margin-left: 0.5rem;
+      border-radius: 5px;
+      background-color: #ffc107;
+      border: none;
+      cursor: pointer;
+    }
+
+    .link-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .link-info {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Gerir Links</h1>
+  <form id="form-link">
+    <input type="text" id="title" placeholder="Título do Link" required />
+    <input type="url" id="url" placeholder="URL do Link" required />
+    <input type="hidden" id="linkId" />
+    <button type="submit">Salvar</button>
+  </form>
+  <div id="links"></div>
+  <script src="./src/js/script.js"></script>
+</body>
+</html>
