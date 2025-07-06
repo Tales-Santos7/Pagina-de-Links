@@ -1,4 +1,4 @@
-# Tales Santos - Linktree Pessoal
+# Linktree Pessoal
 
 Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solução prática e estética para centralizar as redes sociais e contatos profissionais.
 
