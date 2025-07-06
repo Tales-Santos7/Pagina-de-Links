@@ -24,11 +24,11 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 ### Construído com
 
 <div style="display: inline_block"><br>
-- HTML5 <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"><br><br>
-- CSS3 <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"><br><br>
-- JavaScript <img align="center" alt="JavaScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"><br><br>
-- Node.js <img align="center" alt="NodeJs" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"><br><br>
-- MongoDB <img align="center" alt="MongoDB" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"><br>
+<img title="JavaScript" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=javascript" alt="JavaScript">
+<img title="Node.js" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=nodejs" alt="Node.js">
+<img title="MongoDB" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB">
+<img title="HTML" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=html" alt="HTML">
+<img title="CSS" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=css" alt="CSS">
 </div>
 
 ## Outros
