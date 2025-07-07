@@ -1,9 +1,31 @@
+document.getElementById("form-avatar").onsubmit = async (e) => {
+  e.preventDefault();
+
+  const file = document.getElementById("avatarInput").files[0];
+  if (!file) return alert("Selecione uma imagem.");
+
+  const imageUrl = await uploadImage(file);
+
+  // Guarda imagem no MongoDB
+  await fetch("/api/perfil", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Tales Santos", // ou dinâmico
+      imageUrl,
+      bio: "Desenvolvedor web",
+    }),
+  });
+
+  alert("Imagem atualizada com sucesso!");
+};
+
 const form = document.getElementById("form-link");
 const linksDiv = document.getElementById("links");
 
 // Carrega todos os links da API e renderiza na tela
 async function fetchLinks() {
-  const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");
+  const res = await fetch("/api/links");
   const links = await res.json();
 
   linksDiv.innerHTML = ""; // Limpa a lista antes de renderizar
