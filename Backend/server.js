@@ -24,20 +24,30 @@ app.post("/api/upload-image", async (req, res) => {
   try {
     const { imageBase64 } = req.body;
 
+    const buffer = Buffer.from(imageBase64, "base64");
+
     const formData = new FormData();
-    formData.append("image", imageBase64);
-    const headers = formData.getHeaders();
+    formData.append("image", buffer, {
+      filename: "upload.png",
+      contentType: "image/png", // ou image/jpeg se for o caso
+    });
 
     const response = await fetch(
       `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
       {
         method: "POST",
-        headers,
         body: formData,
+        headers: formData.getHeaders(),
       }
     );
 
     const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      console.error("Resposta do ImgBB:", data);
+      return res.status(500).json({ error: "Falha no upload para ImgBB." });
+    }
+
     res.json({ url: data.data.url });
   } catch (err) {
     console.error("Erro ao enviar imagem:", err);
