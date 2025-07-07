@@ -1,5 +1,6 @@
 const express = require("express");
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const FormData = require("form-data");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,7 +9,6 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const PAINEL = process.env.PAINEL || 5000;
-
 
 // Middlewares
 app.use(cors());
@@ -71,21 +71,23 @@ const UserProfile = mongoose.model(
     name: String,
     imageUrl: String,
     bio: String,
+    footer: String,
   })
 );
 
 // Criar ou atualizar perfil
-app.post('/api/perfil', async (req, res) => {
-  const { name, imageUrl, bio } = req.body;
+app.post("/api/perfil", async (req, res) => {
+  const { name, imageUrl, bio, footer } = req.body;
 
   let perfil = await UserProfile.findOne(); // Considera apenas um perfil
   if (perfil) {
     perfil.name = name || perfil.name;
     perfil.imageUrl = imageUrl || perfil.imageUrl;
     perfil.bio = bio || perfil.bio;
+    perfil.footer = footer || perfil.footer; // <-- adiciona aqui
     await perfil.save();
   } else {
-    perfil = new UserProfile({ name, imageUrl, bio });
+    perfil = new UserProfile({ name, imageUrl, bio, footer }); // <-- e aqui
     await perfil.save();
   }
 
@@ -93,7 +95,7 @@ app.post('/api/perfil', async (req, res) => {
 });
 
 // Obter perfil
-app.get('/api/perfil', async (req, res) => {
+app.get("/api/perfil", async (req, res) => {
   const perfil = await UserProfile.findOne();
   res.json(perfil);
 });

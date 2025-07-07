@@ -56,9 +56,22 @@
 <body>
   <h1>Gerir Links</h1>
   <form id="form-avatar">
-  <input type="file" id="avatarInput" accept="image/*" required />
-  <button type="submit">Atualizar Foto</button>
-</form>
+    <div style="margin-bottom: 1rem;">
+      <img id="imagemAtual" src="" alt="Imagem atual" width="120" style="border-radius: 8px; display: none;" />
+    </div>
+    <input type="file" id="avatarInput" accept="image/*" />
+    <button type="submit">Atualizar Foto</button>
+    <button type="button" id="btnExcluirImagem" style="margin-left: 10px; background-color: #dc3545;">Excluir
+      Imagem</button>
+  </form>
+
+  <form id="form-perfil">
+    <input type="text" id="nome" placeholder="Seu nome" required />
+    <input type="text" id="bio" placeholder="Sua bio" required />
+    <input type="text" id="footer" placeholder="Frase do rodapé" required />
+    <button type="submit">Salvar Perfil</button>
+  </form>
+
   <form id="form-link">
     <input type="text" id="title" placeholder="Título do Link" required />
     <input type="url" id="url" placeholder="URL do Link" required />
@@ -68,4 +81,5 @@
   <div id="links"></div>
   <script src="./src/js/script.js"></script>
 </body>
+
 </html>

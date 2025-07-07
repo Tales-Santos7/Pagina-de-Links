@@ -19,6 +19,23 @@ async function uploadImage(file) {
   return data.url;
 }
 
+document.getElementById("form-perfil").onsubmit = async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("nome").value;
+  const bio = document.getElementById("bio").value;
+  const footer = document.getElementById("footer").value;
+
+  await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, bio, footer }),
+  });
+
+  alert("Perfil atualizado!");
+  carregarPerfil();
+};
+
 // Handler onsubmit do form-avatar, declarado uma única vez
 document.getElementById("form-avatar").onsubmit = async (e) => {
   e.preventDefault();
@@ -39,6 +56,25 @@ document.getElementById("form-avatar").onsubmit = async (e) => {
   });
 
   alert("Imagem atualizada com sucesso!");
+  carregarPerfil(); // Atualiza no painel
+};
+
+document.getElementById("btnExcluirImagem").onclick = async () => {
+  const confirmar = confirm("Deseja realmente remover a imagem de perfil?");
+  if (!confirmar) return;
+
+  await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Tales Santos",
+      imageUrl: "", // Zera a imagem
+      bio: "Desenvolvedor web",
+    }),
+  });
+
+  alert("Imagem removida.");
+  carregarPerfil();
 };
 
 const form = document.getElementById("form-link");
