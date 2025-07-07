@@ -1,3 +1,25 @@
+async function uploadImage(file) {
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  const response = await fetch("https://links-tales-3ns6.onrender.com/api/upload-image", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ imageBase64: base64 }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) throw new Error(data.error || "Erro ao enviar a imagem");
+
+  return data.url;
+}
+
+// Handler onsubmit do form-avatar, declarado uma única vez
 document.getElementById("form-avatar").onsubmit = async (e) => {
   e.preventDefault();
 
@@ -6,12 +28,11 @@ document.getElementById("form-avatar").onsubmit = async (e) => {
 
   const imageUrl = await uploadImage(file);
 
-  // Guarda imagem no MongoDB
   await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      name: "Tales Santos", // ou dinâmico
+      name: "Tales Santos",
       imageUrl,
       bio: "Desenvolvedor web",
     }),
