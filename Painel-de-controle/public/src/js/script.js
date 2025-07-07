@@ -7,7 +7,7 @@ document.getElementById("form-avatar").onsubmit = async (e) => {
   const imageUrl = await uploadImage(file);
 
   // Guarda imagem no MongoDB
-  await fetch("/api/perfil", {
+  await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -25,7 +25,7 @@ const linksDiv = document.getElementById("links");
 
 // Carrega todos os links da API e renderiza na tela
 async function fetchLinks() {
-  const res = await fetch("/api/links");
+  const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");
   const links = await res.json();
 
   linksDiv.innerHTML = ""; // Limpa a lista antes de renderizar

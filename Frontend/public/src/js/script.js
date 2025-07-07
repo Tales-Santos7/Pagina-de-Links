@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const avatar = document.querySelector(".avatar img");
 
   try {
-    const perfilRes = await fetch("/api/perfil");
+    const perfilRes = await fetch("https://links-tales-3ns6.onrender.com/api/perfil");
     const perfil = await perfilRes.json();
     if (perfil?.imageUrl) {
       avatar.src = perfil.imageUrl;
     }
 
-    const res = await fetch("/api/links");
+    const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");
     const links = await res.json();
 
     linksContainer.innerHTML = "";
