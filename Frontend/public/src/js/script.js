@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const linksContainer = document.getElementById("links");
 
-  carregarPerfil(); // ✅ Só isso já resolve
+   if (document.getElementById("nome")) {
+    carregarPerfil();
+  }
 
   try {
     const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");

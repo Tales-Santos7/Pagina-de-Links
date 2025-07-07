@@ -6,11 +6,14 @@ async function uploadImage(file) {
     reader.readAsDataURL(file);
   });
 
-  const response = await fetch("https://links-tales-3ns6.onrender.com/api/upload-image", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ imageBase64: base64 }),
-  });
+  const response = await fetch(
+    "https://links-tales-3ns6.onrender.com/api/upload-image",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageBase64: base64 }),
+    }
+  );
 
   const data = await response.json();
 
@@ -19,22 +22,27 @@ async function uploadImage(file) {
   return data.url;
 }
 
-document.getElementById("form-perfil").onsubmit = async (e) => {
-  e.preventDefault();
+document
+  .getElementById("form-perfil")
+  ?.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById("nome").value;
-  const bio = document.getElementById("bio").value;
-  const footer = document.getElementById("footer").value;
+    const name = document.getElementById("nome")?.value || "";
+    const bio = document.getElementById("bio")?.value || "";
+    const footer = document.getElementById("footer")?.value || "";
 
-  await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, bio, footer }),
+    await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, bio, footer }),
+    });
+
+    alert("Perfil atualizado!");
+
+    if (typeof carregarPerfil === "function") {
+      carregarPerfil();
+    }
   });
-
-  alert("Perfil atualizado!");
-  carregarPerfil();
-};
 
 // Handler onsubmit do form-avatar, declarado uma única vez
 document.getElementById("form-avatar").onsubmit = async (e) => {
