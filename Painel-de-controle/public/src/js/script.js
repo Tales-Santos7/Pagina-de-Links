@@ -42,6 +42,7 @@ document
     if (typeof carregarPerfil === "function") {
       carregarPerfil();
     }
+    carregarPerfil();
   });
 
 // Handler onsubmit do form-avatar, declarado uma única vez
