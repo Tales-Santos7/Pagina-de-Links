@@ -222,3 +222,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   }
 });
+
+// Controle de navegação interna com IDs originais
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    // ativa o link atual
+    document
+      .querySelectorAll(".nav-link")
+      .forEach((l) => l.classList.remove("active"));
+    link.classList.add("active");
+
+    // oculta todas as seções
+    document
+      .querySelectorAll(".card")
+      .forEach((sec) => sec.classList.remove("active"));
+
+    // mostra a seção alvo, se existir
+    const alvo = document.getElementById(link.dataset.target);
+    if (alvo) alvo.classList.add("active");
+  });
+});
