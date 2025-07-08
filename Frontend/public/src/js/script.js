@@ -64,11 +64,14 @@ async function uploadImage(file) {
     reader.readAsDataURL(file);
   });
 
-  const res = await fetch("https://links-tales-3ns6.onrender.com/api/upload-image", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ imageBase64: base64 }),
-  });
+  const res = await fetch(
+    "https://links-tales-3ns6.onrender.com/api/upload-image",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageBase64: base64 }),
+    }
+  );
 
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || "Erro ao enviar imagem");
@@ -176,7 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Renderizar botões de edição e exclusão
     setTimeout(async () => {
-      const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");
+      const res = await fetch(
+        "https://links-tales-3ns6.onrender.com/api/links"
+      );
       const links = await res.json();
       const container = document.getElementById("links");
 
@@ -202,7 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
         btnDel.onclick = async () => {
           const confirmar = confirm("Confirma a exclusão?");
           if (!confirmar) return;
-          await fetch(`https://links-tales-3ns6.onrender.com/api/links/${link._id}`, { method: "DELETE" });
+          await fetch(
+            `https://links-tales-3ns6.onrender.com/api/links/${link._id}`,
+            { method: "DELETE" }
+          );
           carregarLinks();
         };
 
