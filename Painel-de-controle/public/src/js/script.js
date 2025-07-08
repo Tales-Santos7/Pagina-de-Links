@@ -1,3 +1,27 @@
+async function carregarPerfil() {
+  try {
+    const perfilRes = await fetch(
+      "https://links-tales-3ns6.onrender.com/api/perfil"
+    );
+    const perfil = await perfilRes.json();
+
+    document.getElementById("nome").value = perfil.name || "";
+    document.getElementById("bio").value = perfil.bio || "";
+    document.getElementById("footer").value = perfil.footer || "";
+    document.querySelector("footer").textContent = perfil.footer || "";
+
+    const avatarEl = document.getElementById("imagemAtual");
+    if (perfil?.imageUrl) {
+      avatarEl.src = perfil.imageUrl;
+      avatarEl.style.display = "block";
+    } else {
+      avatarEl.style.display = "none";
+    }
+  } catch (err) {
+    console.error("Erro ao carregar perfil:", err);
+  }
+}
+
 async function uploadImage(file) {
   const base64 = await new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -53,14 +77,16 @@ document.getElementById("form-avatar").onsubmit = async (e) => {
   if (!file) return alert("Selecione uma imagem.");
 
   const imageUrl = await uploadImage(file);
+  const name = document.getElementById("nome")?.value || "Tales Santos";
+  const bio = document.getElementById("bio")?.value || "Desenvolvedor web";
 
   await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      name: "Tales Santos",
+      name,
       imageUrl,
-      bio: "Desenvolvedor web",
+      bio,
     }),
   });
 
@@ -72,13 +98,16 @@ document.getElementById("btnExcluirImagem").onclick = async () => {
   const confirmar = confirm("Deseja realmente remover a imagem de perfil?");
   if (!confirmar) return;
 
+  const name = document.getElementById("nome")?.value || "Tales Santos";
+  const bio = document.getElementById("bio")?.value || "Desenvolvedor web";
+
   await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      name: "Tales Santos",
-      imageUrl: "", // Zera a imagem
-      bio: "Desenvolvedor web",
+      name,
+      imageUrl: "",
+      bio,
     }),
   });
 
