@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel de Controle</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="./env.js"></script>
+  <script src="./src/js/script.js"></script>
   <link rel="stylesheet" href="./src/css/style.css" />
 </head>
 
@@ -61,6 +64,26 @@
       <div id="links"></div>
     </section>
   </main>
-  <script src="./src/js/script.js"></script>
+
+  <script>// Controle de navegação interna com IDs originais
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    // ativa o link atual
+    document
+      .querySelectorAll(".nav-link")
+      .forEach((l) => l.classList.remove("active"));
+    link.classList.add("active");
+
+    // oculta todas as seções
+    document
+      .querySelectorAll(".card")
+      .forEach((sec) => sec.classList.remove("active"));
+
+    // mostra a seção alvo, se existir
+    const alvo = document.getElementById(link.dataset.target);
+    if (alvo) alvo.classList.add("active");
+  });
+});
+</script>
 </body>
 </html>

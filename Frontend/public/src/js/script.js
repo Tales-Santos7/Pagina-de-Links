@@ -1,7 +1,9 @@
+const apiUrl = window.API_URL;
+
 // Função de carregamento do perfil
 async function carregarPerfil() {
   try {
-    const res = await fetch("https://links-tales-3ns6.onrender.com/api/perfil");
+    const res = await fetch(`${apiUrl}/api/perfil`);
     const perfil = await res.json();
 
     // Atualiza página pública
@@ -38,7 +40,7 @@ async function carregarPerfil() {
 // Função de carregar links (para página pública ou painel)
 async function carregarLinks() {
   try {
-    const res = await fetch("https://links-tales-3ns6.onrender.com/api/links");
+    const res = await fetch(`${apiUrl}/api/links`);
     const links = await res.json();
     const container = document.getElementById("links");
     if (!container) return;
@@ -67,7 +69,7 @@ async function uploadImage(file) {
   });
 
   const res = await fetch(
-    "https://links-tales-3ns6.onrender.com/api/upload-image",
+    `${apiUrl}/api/upload-image`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -94,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const bio = document.getElementById("bio").value;
       const footer = document.getElementById("footer").value;
 
-      await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+      await fetch(`${apiUrl}/api/perfil`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, bio, footer }),
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const bio = document.getElementById("bio").value;
       const footer = document.getElementById("footer").value;
 
-      await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+      await fetch(`${apiUrl}/api/perfil`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, bio, footer, imageUrl }),
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const bio = document.getElementById("bio").value;
       const footer = document.getElementById("footer").value;
 
-      await fetch("https://links-tales-3ns6.onrender.com/api/perfil", {
+      await fetch(`${apiUrl}/api/perfil`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, bio, footer, imageUrl: "" }),
@@ -161,13 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const id = document.getElementById("linkId").value;
 
       if (id) {
-        await fetch(`https://links-tales-3ns6.onrender.com/api/links/${id}`, {
+        await fetch(`${apiUrl}/api/links/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ title, url }),
         });
       } else {
-        await fetch("https://links-tales-3ns6.onrender.com/api/links", {
+        await fetch(`${apiUrl}/api/links`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ title, url }),
@@ -182,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Renderizar botões de edição e exclusão
     setTimeout(async () => {
       const res = await fetch(
-        "https://links-tales-3ns6.onrender.com/api/links"
+        `${apiUrl}/api/links`
       );
       const links = await res.json();
       const container = document.getElementById("links");
@@ -210,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const confirmar = confirm("Confirma a exclusão?");
           if (!confirmar) return;
           await fetch(
-            `https://links-tales-3ns6.onrender.com/api/links/${link._id}`,
+            `${apiUrl}/api/links/${link._id}`,
             { method: "DELETE" }
           );
           carregarLinks();
