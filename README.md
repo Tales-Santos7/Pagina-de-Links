@@ -18,7 +18,7 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 
 ## Sobre esse Projeto
 
-• <strong>Personalizável</strong>: É possível editar as imagens, os textose os links apresentados diretamente por um painel de administração.<br>
+• <strong>Personalizável</strong>: É possível editar as imagens, os textos e os links apresentados diretamente por um painel de administração.<br>
 • <strong>Painel de controle intuitivo</strong>: Fácil de gerir, permite adicionar, editar ou excluir links com simplicidade.<br>
 • <strong>Responsivo</strong>: Perfeito para visualização em dispositivos móveis e desktop.<br>
 • <strong>Design moderno</strong>: Visual limpo e atrativo com botões em destaque.
