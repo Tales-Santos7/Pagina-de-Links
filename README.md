@@ -11,8 +11,6 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 ### Links
 
 * URL do site ativo: [🛜Acessa o projeto aqui💻](https://links-tales.vercel.app/)
-* [Painel de Controle](https://github.com/Tales-Santos7/Pagina-de-Links/tree/main/Painel-de-controle)
-* [Back-end](https://github.com/Tales-Santos7/Pagina-de-Links/tree/main/Backend)
 
 ## Sobre esse Projeto
 
