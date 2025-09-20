@@ -6,7 +6,11 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 
 ### Captura do projeto
 
-<img src="/links.gif" alt="gif ou imagem do projeto de pagina de links">
+#### Site
+<img src="/links (1).gif" alt="gif ou imagem do projeto de pagina de links">
+
+#### Painel
+<img src="/links-painel.gif" alt="gif ou imagem do projeto de pagina de links">
 
 ### Links
 
