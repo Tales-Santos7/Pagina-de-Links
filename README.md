@@ -10,7 +10,7 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 
 ### Links
 
-* URL do site ativo: [🛜Acessa o projeto aqui💻](https://links-tales.vercel.app/)
+* URL do site ativo: [🛜Acessa o projeto aqui💻](https://demo-pagina-de-links.vercel.app/)
 
 ## Sobre esse Projeto
 
