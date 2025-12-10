@@ -31,6 +31,7 @@ Este é um projeto de página pessoal estilo *Linktree*, desenvolvido como solu�
 <img title="MongoDB" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB">
 <img title="HTML" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=html" alt="HTML">
 <img title="CSS" align="center" height="40" width="40" src="https://skillicons.dev/icons?i=css" alt="CSS">
+<img title="ImgBB" align="center" height="40" width="40" src="https://pipedream.com/s.v0/app_1M0hkk/logo/orig" alt="ImgBB">
 </div>
 
 ## Outros
